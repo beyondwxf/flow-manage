@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+  <property name="logRoot" value="/home/tomcat/logs/flow-manage" />
+
+  <!-- 彩色日志格式 -->
+  <property name="CONSOLE_LOG_PATTERN" value="%highlight(%date{yyyy-MM-dd HH:mm:ss.SSS}) %gray([%thread]) %boldYellow([%-5level])  %boldCyan([%replace(%caller{1}){'\t|Caller.{1}0|\r\n', ''}]) %msg%n"/>
+
+  <!-- 控制台打印日志的相关配置 --> 
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+     <!-- 日志格式 -->
+    <encoder>
+        <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        <charset>UTF-8</charset>
+    </encoder>
+    <!-- 日志级别过滤器 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!-- 过滤的级别 -->
+      <!--<level>INFO</level>-->
+      <!-- 匹配时的操作：接收（记录） -->
+      <onMatch>ACCEPT</onMatch>
+      <!-- 不匹配时的操作：拒绝（不记录） -->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+
+  </appender>
+
+  
+  <!-- WEB模块INFO文件日志 -->
+  <appender name="WEB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+     <!-- 保存日志文件的路径 -->
+    <file>${logRoot}/web.log</file>
+    <!-- 日志格式 -->
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] [%thread] - %m%n</pattern>
+    </encoder>
+    <!-- 日志级别过滤器 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!-- 过滤的级别 -->
+      <level>INFO</level>
+      <!-- 匹配时的操作：接收（记录） -->
+      <onMatch>ACCEPT</onMatch>
+      <!-- 不匹配时的操作：拒绝（不记录） -->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!-- 循环政策：基于时间创建日志文件 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日志文件名格式 -->
+      <fileNamePattern>${logRoot}/web.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <!-- 最大保存时间：30天-->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <!-- WEB模块ERROR文件日志 -->
+  <appender name="WEB-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 保存日志文件的路径 -->
+    <file>${logRoot}/web-error.log</file>
+    <!-- 日志格式 -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] [%thread] - %m%n</pattern>
+    </encoder>
+    <!-- 日志级别过滤器 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!-- 过滤的级别 -->
+      <level>ERROR</level>
+      <!-- 匹配时的操作：接收（记录） -->
+      <onMatch>ACCEPT</onMatch>
+      <!-- 不匹配时的操作：拒绝（不记录） -->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!-- 循环政策：基于时间创建日志文件 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日志文件名格式 -->
+      <fileNamePattern>${logRoot}/web-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <!-- 最大保存时间：30天-->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <!-- INTEGRATION模块INFO文件日志 -->
+  <appender name="INTEGRATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+     <!-- 保存日志文件的路径 -->
+    <file>${logRoot}/integration.log</file>
+   <!-- 日志格式 -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] [%thread] - %m%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+    <!-- 日志级别过滤器 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!-- 过滤的级别 -->
+      <level>INFO</level>
+      <!-- 匹配时的操作：接收（记录） -->
+      <onMatch>ACCEPT</onMatch>
+      <!-- 不匹配时的操作：拒绝（不记录） -->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!-- 循环政策：基于时间创建日志文件 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日志文件名格式 -->
+      <fileNamePattern>${logRoot}/integration.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <!-- 最大保存时间：30天-->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+  
+  <!-- INTEGRATION模块ERROR文件日志 --> 
+  <appender name="INTEGRATION-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+     <!-- 保存日志文件的路径 -->
+    <file>${logRoot}/integration-error.log</file>
+    <!-- 日志格式 -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] [%thread] - %m%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+    <!-- 日志级别过滤器 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!-- 过滤的级别 -->
+      <level>ERROR</level>
+      <!-- 匹配时的操作：接收（记录） -->
+      <onMatch>ACCEPT</onMatch>
+      <!-- 不匹配时的操作：拒绝（不记录） -->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!-- 循环政策：基于时间创建日志文件 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日志文件名格式 -->
+      <fileNamePattern>${logRoot}/integration-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <!-- 最大保存时间：30天-->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+  
+  <!-- DAL模块SQL输出文件日志 --> 
+  <appender name="DAL-SQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+     <!-- 保存日志文件的路径 -->
+    <file>${logRoot}/dal-sql.log</file>
+    <!-- 日志格式 -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] [%thread] - %m%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+    <!-- 日志级别过滤器 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <!-- 过滤的级别 -->
+      <level>DEBUG</level>
+      <!-- 匹配时的操作：接收（记录） -->
+      <onMatch>ACCEPT</onMatch>
+      <!-- 不匹配时的操作：拒绝（不记录） -->
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!-- 循环政策：基于时间创建日志文件 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日志文件名格式 -->
+      <fileNamePattern>${logRoot}/dal-sql.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <!-- 最大保存时间：30天-->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <!-- 针对wxitem的配置 -->
+  <logger name="com.hexun.busi" additivity="false">
+    <level value="info" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="WEB" />
+	<appender-ref ref="WEB-ERROR" />
+  </logger>
+  <logger name="com.hexun.busi.wxitem.mapper" additivity="false">
+    <level value="debug" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="DAL-SQL" />
+    <appender-ref ref="WEB-ERROR" />
+  </logger>
+
+  <!-- 控制台输出 --> 
+  <root level="info">  
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="WEB-ERROR" />
+  </root>
+</configuration>

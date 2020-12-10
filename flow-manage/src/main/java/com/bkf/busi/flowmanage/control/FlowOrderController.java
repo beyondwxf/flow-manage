@@ -29,7 +29,7 @@ public class FlowOrderController {
     @Resource
     private FlowOrderService flowOrderService;
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public Map index() {
         Map map = new HashMap();
         map.put("test", "test");

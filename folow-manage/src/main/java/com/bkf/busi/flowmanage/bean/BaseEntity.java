@@ -1,7 +1,5 @@
 package com.bkf.busi.flowmanage.bean;
 
-import java.io.Serializable;
-
 /**
  * @ClassName BaseEntity
  * @Description
@@ -9,5 +7,5 @@ import java.io.Serializable;
  * @Date 2020/12/7 11:23
  * @Version V1.0
  **/
-public class BaseEntity implements Serializable {
+public class BaseEntity implements java.io.Serializable {
 }

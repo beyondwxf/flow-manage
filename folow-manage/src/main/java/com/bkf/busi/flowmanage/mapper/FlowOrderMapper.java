@@ -3,7 +3,6 @@ package com.bkf.busi.flowmanage.mapper;
 import com.bkf.busi.flowmanage.bean.FlowOrder;
 
 import java.util.List;
-import java.util.Map;
 
 public interface FlowOrderMapper {
     /**

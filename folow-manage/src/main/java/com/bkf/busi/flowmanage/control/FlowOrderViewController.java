@@ -6,6 +6,7 @@ import com.bkf.busi.flowmanage.util.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +48,16 @@ public class FlowOrderViewController {
         return ("upload_excel");
     }
 
-
+    /**
+     * 图像页面
+     * @param req
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="bi",method={RequestMethod.GET,RequestMethod.POST})
+    public String bi(HttpServletRequest req) {
+        return ("bi");
+    }
 
     /**
      * 上传图片

@@ -3,6 +3,7 @@ package com.bkf.busi.flowmanage.service;
 import com.bkf.busi.flowmanage.bean.FlowOrder;
 import com.github.pagehelper.PageInfo;
 
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -81,4 +82,12 @@ public interface FlowOrderService {
      * @return java.util.List<com.bkf.busi.flowmanage.bean.FlowOrder>
      */
     PageInfo<FlowOrder> findFlowOrderList(int pageNum,int pageSize);
+
+
+    /**
+     * excel数据导入数据库
+     * @param normalFile
+     */
+    void importExcel(File normalFile) throws Exception;
+
 }

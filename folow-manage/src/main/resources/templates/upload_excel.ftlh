@@ -50,7 +50,6 @@
       });
 
       function initFileInput() {
-
           $('#localFile').fileinput({
               language: 'zh',
               uploadUrl: '${request.contextPath}/upload_file',
@@ -67,11 +66,12 @@
               msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
               allowedFileExtensions: ['xlsx','csv']
           }).on("filebatchselected", function(event, files) {
+              alert(33);
               $(this).fileinput("upload");
           }).on("fileuploaded", function (event, data) {    //一个文件上传成功
+              alert(4);
               console.log('文件上传成功！');
               console.log('文件上传成功！'+data.id);
-              alert(1);
               alert(data.req_code);
               console.log('文件上传成功！'+data.id);
               if(data.req_code == "T"){
